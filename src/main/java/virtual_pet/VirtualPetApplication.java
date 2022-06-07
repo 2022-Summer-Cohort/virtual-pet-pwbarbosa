@@ -56,6 +56,8 @@ public class VirtualPetApplication {
                 spca.admitPet(pet);
                 System.out.println(admittedPetName + " is in good hands. You've made the right call.");
                 System.out.println("What would you like to do next?");
+                spca.tickAllPets();
+
             }
             //Feeds all pets
             else if (choicePrime.equalsIgnoreCase("2")) {
@@ -133,6 +135,7 @@ public class VirtualPetApplication {
                 String petToAdoptCap = petToAdopt.substring(0,1).toUpperCase() + petToAdopt.substring(1);
                 spca.adoptPet(petToAdoptCap);
                 System.out.println("We knew " + petToAdoptCap + " would find a forever home! \nWe are so happy it's you!");
+                spca.tickAllPets();
             }
             //Get all statuses
             else if (choicePrime.equalsIgnoreCase("11")) {
