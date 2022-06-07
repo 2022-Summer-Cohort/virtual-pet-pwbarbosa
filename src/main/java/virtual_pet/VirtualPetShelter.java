@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VirtualPetShelter {
+   //Array list that holds all Virtual Pets (VP's)
     private ArrayList<VirtualPet> boardedPets = new ArrayList<>();
 
+    //Getters for shelter/all VP's
     public ArrayList<VirtualPet> getBoardedPets() {
         return boardedPets;
     }
-
     public String getAllNames() {
         String nameString = "";
         for (VirtualPet currentPet:boardedPets) {
@@ -18,12 +19,12 @@ public class VirtualPetShelter {
         return nameString.trim();
     }
 
+    //Actions/methods for shelter/all VP's
     public void feedAllPets() {
         for (VirtualPet currentPet: boardedPets) {
             currentPet.feedPet();
         }
     }
-
     public void feedSpecificPet(String petToFeed) {
         for (VirtualPet currentPet:boardedPets) {
             if (currentPet.getName().equalsIgnoreCase(petToFeed)) {
@@ -32,13 +33,11 @@ public class VirtualPetShelter {
             }
         }
     }
-
     public void waterAllPets() {
         for (VirtualPet currentPet: boardedPets) {
             currentPet.waterPet();
         }
     }
-
     public void waterSpecificPet(String petToWater) {
         for (VirtualPet currentPet:boardedPets) {
             if (currentPet.getName().equalsIgnoreCase(petToWater)) {
@@ -46,15 +45,12 @@ public class VirtualPetShelter {
                 break;
             }
         }
-
     }
-
     public void sleepAllPets() {
         for (VirtualPet currentPet: boardedPets) {
             currentPet.sleepPet();
         }
     }
-
     public void sleepSpecificPet(String petToSleep) {
         for (VirtualPet currentPet:boardedPets) {
             if (currentPet.getName().equalsIgnoreCase(petToSleep)) {
@@ -63,13 +59,11 @@ public class VirtualPetShelter {
             }
         }
     }
-
     public void playWithAllPets() {
         for (VirtualPet currentPet: boardedPets) {
             currentPet.playWithPet();
         }
     }
-
     public void playWithSpecificPet(String petToPlayWith) {
         for (VirtualPet currentPet:boardedPets) {
             if (currentPet.getName().equalsIgnoreCase(petToPlayWith)) {
@@ -78,7 +72,6 @@ public class VirtualPetShelter {
             }
         }
     }
-
     public void tickAllPets() {
         for (VirtualPet currentPet: boardedPets) {
             currentPet.tick();
@@ -90,7 +83,7 @@ public class VirtualPetShelter {
     }
 
     public void admitMultiplePets(VirtualPet[] petsToAdd) {
-            boardedPets.addAll(List.of(petsToAdd));
+        boardedPets.addAll(List.of(petsToAdd));
     }
     public void adoptPet(String nameOfPetToAdopt) {
         for (int i = boardedPets.size() - 1;i >= 0;i--) {
@@ -98,14 +91,15 @@ public class VirtualPetShelter {
                 boardedPets.remove(i);
                 break;
             }
-
         }
     }
 
-    public void adoptMultiplePets(VirtualPet[] petsToRemove) {
-        boardedPets.removeAll(List.of(petsToRemove));
-    }
+    //Not using this for now. Might include in 3rd iteration
+//    public void adoptMultiplePets(VirtualPet[] petsToRemove) {
+//        boardedPets.removeAll(List.of(petsToRemove));
+//    }
 
+    //Various status messages for VP's
     public void getAllStatuses() {
         String statuses = "";
         for (VirtualPet currentPet:boardedPets) {
@@ -151,7 +145,7 @@ public class VirtualPetShelter {
 
         }
     }
-
+    //Allows me to print a string representation of boardedPets
     @Override
     public String toString() {
         return "VirtualPetShelter{" +

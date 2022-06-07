@@ -36,18 +36,19 @@ public class VirtualPetShelterTest {
         assertTrue(!testShelter.getBoardedPets().contains(underTest));
     }
 
-    @Test
-    public void shouldRemoveMultiplePets() {
-        VirtualPet test1 = new VirtualPet("test1", 6, 6, 6,true,6);
-        VirtualPet test2 = new VirtualPet("test2", 6, 6, 6,true,6);
-        VirtualPet test3 = new VirtualPet("test3", 6, 6, 6,true,6);
-        VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.admitMultiplePets(new VirtualPet[]{test1, test2, test3});
-        underTest.adoptMultiplePets(new VirtualPet[]{test1, test2});
-        assertTrue(underTest.getBoardedPets().contains(test3));
-        assertFalse(underTest.getBoardedPets().contains(test1));
-        assertFalse(underTest.getBoardedPets().contains(test2));
-    }
+    //Not using this for now. Might include in 3rd iteration
+//    @Test
+//    public void shouldRemoveMultiplePets() {
+//        VirtualPet test1 = new VirtualPet("test1", 6, 6, 6,true,6);
+//        VirtualPet test2 = new VirtualPet("test2", 6, 6, 6,true,6);
+//        VirtualPet test3 = new VirtualPet("test3", 6, 6, 6,true,6);
+//        VirtualPetShelter underTest = new VirtualPetShelter();
+//        underTest.admitMultiplePets(new VirtualPet[]{test1, test2, test3});
+//        underTest.adoptMultiplePets(new VirtualPet[]{test1, test2});
+//        assertTrue(underTest.getBoardedPets().contains(test3));
+//        assertFalse(underTest.getBoardedPets().contains(test1));
+//        assertFalse(underTest.getBoardedPets().contains(test2));
+//    }
 
     @Test
     public void shouldLowerHungerLevelForAllPets() {

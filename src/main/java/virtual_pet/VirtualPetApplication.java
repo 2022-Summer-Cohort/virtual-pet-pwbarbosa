@@ -12,9 +12,6 @@ public class VirtualPetApplication {
     public void gameLoop() {
         Scanner input = new Scanner(System.in);
 
-
-//        String anyName = input.nextLine();
-//        String name = anyName.substring(0,1).toUpperCase() + anyName.substring(1);
         VirtualPet virtualPet1 = new VirtualPet("Fred", 4, 5, 6, true, 6);
         VirtualPet virtualPet2 = new VirtualPet("Brock", 4, 5, 6, true, 6);
         VirtualPet virtualPet3 = new VirtualPet("Kirk", 4, 5, 6, true, 6);
@@ -24,17 +21,18 @@ public class VirtualPetApplication {
 
         String choicePrime = "";
 
-//        System.out.println("You've just brought " + name + " home from the shelter! Keeping a pet is" +
-//                "\na big responsibility. Why don't we starting caring for your new pet?");
         welcome();
+
         System.out.println("Here at the Virtual Pet Shelter, we've got plenty of lonely pets who need homes!");
         System.out.println("What would you like to do while you're here?");
 
-
+        //Game options
         do {
             spca.getAllStatuses();
             mainMenu();
             choicePrime = input.nextLine();
+
+            //Quit options
             if (choicePrime.equalsIgnoreCase("0")) {
                 quitMenu();
                 String quitResponse = input.nextLine();
@@ -48,6 +46,7 @@ public class VirtualPetApplication {
                     System.out.println("Invalid entry.\nReturning to main menu.");
                 }
             }
+            //Admits Pet to shelter
             else if (choicePrime.equalsIgnoreCase("1")) {
                 System.out.println("We promise to find a great home for the little guy.");
                 System.out.println("What is their name?");
@@ -58,10 +57,14 @@ public class VirtualPetApplication {
                 System.out.println(admittedPetName + " is in good hands. You've made the right call.");
                 System.out.println("What would you like to do next?");
             }
+            //Feeds all pets
             else if (choicePrime.equalsIgnoreCase("2")) {
                 System.out.println("We're feeding all the pets! They sure enjoyed that! Their hunger levels all went down.");
                 spca.feedAllPets();
+                spca.tickAllPets();
+
             }
+            //Feeds specific pet
             else if (choicePrime.equalsIgnoreCase("3")) {
                 System.out.println("Which pet would you like to feed?");
                 System.out.println(spca.getAllNames());
@@ -69,12 +72,18 @@ public class VirtualPetApplication {
                 String petToFeedCap = petToFeed.substring(0,1).toUpperCase() + petToFeed.substring(1);
                 System.out.println("That looked tasty. " + petToFeedCap + "'s hunger level just went down.");
                 spca.feedSpecificPet(petToFeedCap);
+                spca.tickAllPets();
+
 
             }
+            //Waters all pets
             else if (choicePrime.equalsIgnoreCase("4")) {
                 System.out.println("We're watering all the pets! They sure enjoyed that! Their thirst levels all went down!");
                 spca.waterAllPets();
+                spca.tickAllPets();
+
             }
+            //Waters specific pet
             else if (choicePrime.equalsIgnoreCase("5")) {
                 System.out.println("Which pet would you like to water?");
                 System.out.println(spca.getAllNames());
@@ -82,11 +91,15 @@ public class VirtualPetApplication {
                 String petToWaterCap = petToWater.substring(0,1).toUpperCase() + petToWater.substring(1);
                 spca.feedSpecificPet(petToWaterCap);
                 System.out.println("That looked refreshing. " + petToWaterCap + "'s thirst level has gone down!");
+                spca.tickAllPets();
             }
+            //Play with all pets
             else if (choicePrime.equalsIgnoreCase("6")) {
                 System.out.println("So much fur! So much fun! That really wore them out!");
                 spca.playWithAllPets();
+                spca.tickAllPets();
             }
+            //Play with specific pet
             else if (choicePrime.equalsIgnoreCase("7")) {
                 System.out.println("Which pet would you like to play with?");
                 System.out.println(spca.getAllNames());
@@ -94,11 +107,15 @@ public class VirtualPetApplication {
                 String petToPlayWithCap = petToPlayWith.substring(0,1).toUpperCase() + petToPlayWith.substring(1);
                 spca.playWithSpecificPet(petToPlayWithCap);
                 System.out.println("I've never seen " + petToPlayWithCap + " have so much fun!\nMaybe you'll be their forever home?");
+                spca.tickAllPets();
             }
+            //All pets nap
             else if (choicePrime.equalsIgnoreCase("8")) {
                 System.out.println("Lights out. It's shelter nap time. Please keep noise to a minimum.");
-                spca.sleepAllPets();;
+                spca.sleepAllPets();
+                spca.tickAllPets();
             }
+            //Specific pet naps
             else if (choicePrime.equalsIgnoreCase("9")) {
                 System.out.println("Which pet would you like to play with?");
                 System.out.println(spca.getAllNames());
@@ -106,7 +123,9 @@ public class VirtualPetApplication {
                 String petToSleepCap = petToSleep.substring(0,1).toUpperCase() + petToSleep.substring(1);
                 spca.feedSpecificPet(petToSleepCap);
                 System.out.println(petToSleepCap + " looks so cute sleeping.");
+                spca.tickAllPets();
             }
+            //Adopt a pet
             else if (choicePrime.equalsIgnoreCase("10")) {
                 System.out.println("Which pet would you like to adopt?");
                 System.out.println(spca.getAllNames());
@@ -115,15 +134,19 @@ public class VirtualPetApplication {
                 spca.adoptPet(petToAdoptCap);
                 System.out.println("We knew " + petToAdoptCap + " would find a forever home! \nWe are so happy it's you!");
             }
+            //Get all statuses
             else if (choicePrime.equalsIgnoreCase("11")) {
+                spca.tickAllPets();
                 System.out.println("Good idea!");
             }
+            //Recalls main menu for any response that doesn't satisfy an "if" condition
             else {
                 System.out.println("Invalid response. Returning to main menu.");
             }
         } while (!spca.getBoardedPets().isEmpty());
         System.out.println("Come back and play again soon!");
     }
+    //Various menus/pictures
     public void welcome() {
         System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
         System.out.println("|                                                                   |");

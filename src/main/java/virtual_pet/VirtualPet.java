@@ -1,16 +1,18 @@
 package virtual_pet;
 public class VirtualPet {
+    //Virtual Pet variables
     private String name;
     private int hunger;
     private int thirst;
     private int fatigue;
-
-
     private boolean isAlive;
     private int boredom;
-//    private int hungerDeathCount5;
-//    private int thirstDeathCount5;
 
+    //might turn these into a feature during 3rd iteration
+    //private int hungerDeathCount5;
+    //private int thirstDeathCount5;
+
+    //Virtual Pet (VP) constructor
     public VirtualPet(String name, int hunger, int thirst, int fatigue, boolean isAlive, int boredom) {
         this.name = name;
         this.hunger = hunger;
@@ -20,30 +22,27 @@ public class VirtualPet {
         this.boredom = boredom;
     }
 
+    //VP getters
     public String getName() {
         return name;
     }
-
     public int getHunger() {
         return hunger;
     }
-
     public int getThirst() {
         return thirst;
     }
-
     public int getFatigue() {
         return fatigue;
     }
-
     public boolean getIsAlive() {
         return isAlive;
     }
-
     public int getBoredom() {
         return boredom;
     }
 
+    //VP actions/methods
     public void feedPet() {
         hunger -= 6;
         boredom +=3;
@@ -61,7 +60,6 @@ public class VirtualPet {
         System.out.println("WHoops! " + name + " ate too much and threw up!");
         System.out.println("Luckily, an attendant cleaned up the mess.");
     }
-
     public void waterPet() {
         thirst -= 6;
         boredom += 3;
@@ -70,11 +68,9 @@ public class VirtualPet {
             thirstToZero();
         }
     }
-
     public void thirstToZero() {
         thirst = 0;
     }
-
     public void sleepPet() {
         fatigue -= 6;
         boredom = 20;
@@ -83,11 +79,9 @@ public class VirtualPet {
             fatigueToZero();
         }
     }
-
     private void fatigueToZero() {
         fatigue = 0;
     }
-
     public void playWithPet() {
         fatigue += 6;
         thirst += 3;
@@ -98,25 +92,20 @@ public class VirtualPet {
             autoNap();
         }
     }
-
     public void autoNap() {
         System.out.println(name + " is tuckered and decides to nap.");
         sleepPet();
     }
-
     public void tick() {
         fatigue += 1;
         hunger += 1;
         thirst += 1;
-
         if (fatigue >= 20) {
             autoNap();
         }
-
     }
 
-
-
+    //Allows me to print the parameter status
     @Override
     public String toString() {
         return "VirtualPet{" +
