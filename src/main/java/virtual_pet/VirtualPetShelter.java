@@ -1,11 +1,11 @@
 package virtual_pet;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class VirtualPetShelter {
    //Array list that holds all Virtual Pets (VP's)
     private ArrayList<VirtualPet> boardedPets = new ArrayList<>();
+
 
     //Getters for shelter/all VP's
     public ArrayList<VirtualPet> getBoardedPets() {
@@ -18,73 +18,252 @@ public class VirtualPetShelter {
         }
         return nameString.trim();
     }
+    public String getRoboticPetNames() {
+        String nameString = "";
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof RoboticPet) {
+                nameString += ((RoboticPet)currentPet).getName() + " ";
+            }
+        }
+        return nameString.trim();
+    }
+    public String getOrganicPetNames() {
+        String nameString = "";
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof OrganicPet) {
+                nameString += ((OrganicPet)currentPet).getName() + " ";
+            }
+        }
+        return nameString.trim();
+    }
+    public String getOrganicDogNames() {
+        String nameString = "";
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof OrganicDog) {
+                nameString += ((OrganicDog)currentPet).getName() + " ";
+            }
+        }
+        return nameString.trim();
+    }
+    public String getOrganicCatNames() {
+        String nameString = "";
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof OrganicCat) {
+                nameString += ((OrganicCat)currentPet).getName() + " ";
+            }
+        }
+        return nameString.trim();
+    }
+    public String getDogNames() {
+        String nameString = "";
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof Walk) {
+                nameString += ((Walk)currentPet).getName() + " ";
+            }
+        }
+        return nameString.trim();
+    }
+    public String getCatNames() {
+        String nameString = "";
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof PlayInKittyCourtyard) {
+                nameString += ((PlayInKittyCourtyard)currentPet).getName() + " ";
+            }
+        }
+        return nameString.trim();
+    }
 
     //Actions/methods for shelter/all VP's
-    public void feedAllPets() {
+    public void feedAllOrganicPets() {
         for (VirtualPet currentPet: boardedPets) {
-            currentPet.feedPet();
+            if (currentPet instanceof OrganicPet) {
+                ((OrganicPet) currentPet).feedPet();
+            }
         }
     }
-    public void feedSpecificPet(String petToFeed) {
+    public void feedSpecificOrganicPet(String petToFeed) {
         for (VirtualPet currentPet:boardedPets) {
-            if (currentPet.getName().equalsIgnoreCase(petToFeed)) {
-                currentPet.feedPet();
+            if (currentPet.getName().equalsIgnoreCase(petToFeed) && currentPet instanceof OrganicPet) {
+                ((OrganicPet)currentPet).feedPet();
                 break;
             }
         }
     }
-    public void waterAllPets() {
+    public void waterAllOrganicPets() {
         for (VirtualPet currentPet: boardedPets) {
-            currentPet.waterPet();
+            if(currentPet instanceof OrganicPet) {
+                ((OrganicPet) currentPet).waterPet();
+            }
         }
     }
-    public void waterSpecificPet(String petToWater) {
+    public void waterSpecificOrganicPet(String petToWater) {
         for (VirtualPet currentPet:boardedPets) {
-            if (currentPet.getName().equalsIgnoreCase(petToWater)) {
-                currentPet.waterPet();
+            if (currentPet.getName().equalsIgnoreCase(petToWater) && currentPet instanceof OrganicPet) {
+                ((OrganicPet) currentPet).waterPet();
+            }
+                break;
+        }
+    }
+    public void sleepAllOrganicPets() {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof OrganicPet) {
+                ((OrganicPet) currentPet).sleepPet();
+            }
+        }
+    }
+    public void sleepSpecificOrganicPet(String petToSleep) {
+        for (VirtualPet currentPet:boardedPets) {
+            if (currentPet.getName().equalsIgnoreCase(petToSleep) && currentPet instanceof OrganicPet) {
+                ((OrganicPet)currentPet).sleepPet();
                 break;
             }
         }
     }
-    public void sleepAllPets() {
+    public void chargeAllRoboticPets() {
         for (VirtualPet currentPet: boardedPets) {
-            currentPet.sleepPet();
+            if (currentPet instanceof RoboticPet) {
+                ((RoboticPet) currentPet).chargePet();
+            }
         }
     }
-    public void sleepSpecificPet(String petToSleep) {
+    public void chargeSpecificRoboticPet(String petToCharge) {
         for (VirtualPet currentPet:boardedPets) {
-            if (currentPet.getName().equalsIgnoreCase(petToSleep)) {
-                currentPet.sleepPet();
+            if (currentPet.getName().equalsIgnoreCase(petToCharge) && currentPet instanceof RoboticPet) {
+                ((RoboticPet)currentPet).chargePet();
+                break;
+            }
+        }
+    }
+    public void oilAllRoboticPets() {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof RoboticPet) {
+                ((RoboticPet) currentPet).oilPet();
+            }
+        }
+    }
+    public void oilSpecificRoboticPet(String petToOil) {
+        for (VirtualPet currentPet:boardedPets) {
+            if (currentPet.getName().equalsIgnoreCase(petToOil) && currentPet instanceof RoboticPet) {
+                ((RoboticPet)currentPet).oilPet();
+                break;
+            }
+        }
+    }
+
+    public void serviceAllRoboticPets() {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof RoboticPet) {
+                ((RoboticPet) currentPet).servicePet();
+            }
+        }
+    }
+    public void serviceSpecificRoboticPet(String petToService) {
+        for (VirtualPet currentPet:boardedPets) {
+            if (currentPet.getName().equalsIgnoreCase(petToService) && currentPet instanceof RoboticPet) {
+                ((RoboticPet)currentPet).servicePet();
+                break;
+            }
+        }
+    }
+    public void playWithAllKittiesInKittyCourtyard() {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof PlayInKittyCourtyard) {
+                ((PlayInKittyCourtyard) currentPet).playInKittyCourtyard();
+            }
+        }
+    }
+    public void playWithSpecificKittyInKittyCourtyard(String kittyToKitty) {
+        for (VirtualPet currentPet:boardedPets) {
+            if (currentPet.getName().equalsIgnoreCase(kittyToKitty) && currentPet instanceof PlayInKittyCourtyard) {
+                ((PlayInKittyCourtyard)currentPet).playInKittyCourtyard();
+                break;
+            }
+        }
+    }
+    public void walkAllWalkablePets() {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof Walk) {
+                ((Walk)currentPet).walk();
+            }
+        }
+    }
+    public void walkSpecificWalkablePet(String petToWalk) {
+        for (VirtualPet currentPet:boardedPets) {
+            if (currentPet.getName().equalsIgnoreCase(petToWalk) && currentPet instanceof Walk) {
+                ((Walk)currentPet).walk();
                 break;
             }
         }
     }
     public void playWithAllPets() {
         for (VirtualPet currentPet: boardedPets) {
-            currentPet.playWithPet();
+            currentPet.play();
         }
     }
     public void playWithSpecificPet(String petToPlayWith) {
         for (VirtualPet currentPet:boardedPets) {
             if (currentPet.getName().equalsIgnoreCase(petToPlayWith)) {
-                currentPet.playWithPet();
+                currentPet.play();
                 break;
             }
         }
     }
+    public void cleanAllCages() {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof OrganicDog) {
+                ((OrganicDog)currentPet).cleanCage();
+            }
+        }
+    }
+
+    public void cleanSpecificCage(String petWhoseCageToClean) {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof OrganicDog && currentPet.getName().equalsIgnoreCase(petWhoseCageToClean)) {
+                ((OrganicDog)currentPet).cleanCage();
+            }
+        }
+    }
+
+    public void cleanAllLitterBoxes() {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof OrganicCat) {
+                ((OrganicCat)currentPet).cleanLitterBox();
+            }
+        }
+    }
+
+    public void cleanSpecificLitterBox(String petWhoseLitterBoxToClean) {
+        for (VirtualPet currentPet: boardedPets) {
+            if (currentPet instanceof OrganicCat && currentPet.getName().equalsIgnoreCase(petWhoseLitterBoxToClean)) {
+                ((OrganicCat)currentPet).cleanLitterBox();
+            }
+        }
+    }
+
+    public void cleanAllCagesAndLitterBoxes() {
+        cleanAllCages();
+        cleanAllLitterBoxes();
+    }
+
     public void tickAllPets() {
         for (VirtualPet currentPet: boardedPets) {
             currentPet.tick();
         }
     }
 
-    public void admitPet(VirtualPet petToAdd) {
+    public void admitOrganicCat(OrganicCat petToAdd) {
+        boardedPets.add(petToAdd);
+    }
+    public void admitOrganicDog(OrganicDog petToAdd) {
+        boardedPets.add(petToAdd);
+    }
+    public void admitRoboticCat(RoboticCat petToAdd) {
+        boardedPets.add(petToAdd);
+    }
+    public void admitRoboticDog(RoboticDog petToAdd) {
         boardedPets.add(petToAdd);
     }
 
-    public void admitMultiplePets(VirtualPet[] petsToAdd) {
-        boardedPets.addAll(List.of(petsToAdd));
-    }
     public void adoptPet(String nameOfPetToAdopt) {
         for (int i = boardedPets.size() - 1;i >= 0;i--) {
             if (boardedPets.get(i).getName().equalsIgnoreCase(nameOfPetToAdopt)) {
@@ -106,50 +285,23 @@ public class VirtualPetShelter {
 //            below is a general numeric printout of statuses
 //            System.out.println(currentPet.getName() + " is feeling " + currentPet.getThirst() + " thirsty " + currentPet.getHunger() + " hungry " +
 //                    currentPet.getFatigue());
-            if(!currentPet.getIsAlive()) {
-                System.out.println("Poor " + currentPet.getName() + " is dead.");
+            if (currentPet instanceof OrganicCat) {
+                System.out.println(currentPet.getName() + " has " + ((OrganicCat) currentPet).getHunger() + " hunger, " +
+                        ((OrganicCat) currentPet).getThirst() + " thirst, " + ((OrganicCat) currentPet).getFatigue() + " fatigue, "
+                        + ((OrganicCat) currentPet).getBoredom() + " boredom, and " + ((OrganicCat) currentPet).getLitterBoxSoilLevel() +
+                        " litter box soil level.");
             }
-            else if (currentPet.getHunger() < 6 && currentPet.getThirst() < 6 && currentPet.getFatigue() < 6 && currentPet.getBoredom() < 6) {
-                System.out.println(currentPet.getName() + " looks happy and healthy!");
-            }
-            else if (currentPet.getHunger() >= 6 && currentPet.getThirst() < 6 && currentPet.getFatigue() < 6 && currentPet.getBoredom() < 6) {
-                System.out.println(currentPet.getName() + " is looking hungry!");
-            }
-            else if (currentPet.getHunger() < 6 && currentPet.getThirst() >= 6 && currentPet.getFatigue() < 6 && currentPet.getBoredom() < 6) {
-                System.out.println(currentPet.getName() + " is looking thirsty!");
-            }
-            else if (currentPet.getHunger() < 6 && currentPet.getThirst() < 6 && currentPet.getFatigue() >= 6 && currentPet.getBoredom() < 6) {
-                System.out.println("Looks like " + currentPet.getName() + " could use a nap!");
-            }
-            else if (currentPet.getHunger() < 6 && currentPet.getThirst() < 6 && currentPet.getFatigue() < 6 && currentPet.getBoredom() >= 6) {
-                System.out.println(currentPet.getName() + " wants to play!");
-            }
-            else if (currentPet.getHunger() >= 6 && currentPet.getThirst() >= 6 && currentPet.getFatigue() < 6 && currentPet.getBoredom() < 6) {
-                System.out.println(currentPet.getName() + " is hungry and thirsty.");
-            }
-            else if (currentPet.getHunger() >= 6 && currentPet.getThirst() < 6 && currentPet.getFatigue() >= 6 && currentPet.getBoredom() < 6) {
-                System.out.println(currentPet.getName() + " is tired and hungry.");
-            }
-            else if (currentPet.getHunger() < 6 && currentPet.getThirst() >= 6 && currentPet.getFatigue() >= 6 && currentPet.getBoredom() < 6) {
-                System.out.println(currentPet.getName() + " is tired and thirsty.");
-            }
-            else if (currentPet.getHunger() >= 6 && currentPet.getThirst() >= 6 && currentPet.getFatigue() >= 6 && currentPet.getBoredom() >= 6) {
-                System.out.println(currentPet.getName() + " needs some attention!\nHunger level: " + currentPet.getHunger() +
-                        "\nThirst level: " + currentPet.getThirst() + "\nFatigue level: " + currentPet.getFatigue() + "\nBoredom level: " +
-                        currentPet.getBoredom());
+            else if (currentPet instanceof OrganicDog) {
+                System.out.println(currentPet.getName() + " has " + ((OrganicDog) currentPet).getHunger() + " hunger, " +
+                        ((OrganicDog) currentPet).getThirst() + " thirst, " + ((OrganicDog) currentPet).getFatigue() + " fatigue, "
+                        + ((OrganicDog) currentPet).getBoredom() + " boredom, and " + ((OrganicDog) currentPet).getCageSoilLevel() +
+                        " cage soil level.");
             }
             else {
-                System.out.println(currentPet.getName() + " is " + currentPet.getHunger() + " hungry, " + currentPet.getThirst() + " thirsty, " +
-                        currentPet.getFatigue() + " tired, and " + currentPet.getBoredom() + " bored.");
+                System.out.println(currentPet.getName() + " has " + ((RoboticPet) currentPet).getBatteryLevel() + " battery level, " +
+                        ((RoboticPet) currentPet).getOilLevel() + " oil level, " + ((RoboticPet) currentPet).getMaintenanceLevel() + " maintenance level, and "
+                        + ((RoboticPet) currentPet).getBoredom() + " boredom.");
             }
-
         }
-    }
-    //Allows me to print a string representation of boardedPets
-    @Override
-    public String toString() {
-        return "VirtualPetShelter{" +
-                "boardedPets=" + boardedPets +
-                '}';
     }
 }
